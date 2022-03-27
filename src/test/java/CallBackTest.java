@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import io.github.bonigarcia.wdm.WebDriverManager;
 
 import java.util.List;
 
@@ -18,10 +19,9 @@ public class CallBackTest {
     private WebDriver driver;
 
     @BeforeAll
-    public static void setUpAll() {
-        System.setProperty("webdriver.chrome.driver", "driver/win/chromedriver.exe");
-
-
+    static void setupClass() {
+        WebDriverManager.chromedriver().setup();
+        
     }
 
     @BeforeEach
