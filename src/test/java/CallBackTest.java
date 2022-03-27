@@ -17,11 +17,15 @@ public class CallBackTest {
 
     private WebDriver driver;
 
+    @BeforeAll
+    public static void setUpAll() {
+        WebDriverManager.chromedriver().setup();
+    }
+
 
     @BeforeEach
     public void setUp() {
         WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--no-sandbox");
@@ -32,10 +36,10 @@ public class CallBackTest {
 
     @AfterEach
     public void tearDown() {
-        if (driver != null)
+        if (driver != null) {
             driver.quit();
+        }
     }
-
     @Test
     void webinarValidTestUpgraded() {
         driver.get("http://localhost:9999/");
