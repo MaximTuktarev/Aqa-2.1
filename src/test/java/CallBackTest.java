@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 import java.util.List;
 
@@ -19,11 +20,19 @@ public class CallBackTest {
     @BeforeAll
     public static void setUpAll() {
         System.setProperty("webdriver.chrome.driver", "driver/win/chromedriver.exe");
+
+
     }
 
     @BeforeEach
     public void setUp() {
         driver = new ChromeDriver();
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--disable-dev-shm-usage");
+        options.addArguments("--no-sandbox");
+        options.addArguments("--headless");
+        driver = new ChromeDriver(options);
+
     }
 
 
@@ -47,33 +56,33 @@ public class CallBackTest {
     }
 
 
-   //@Test
+    //@Test
     //void notValidUserNameTest() {
 
-        //driver.get("http://localhost:9999/");
-        //List<WebElement> textFields = driver.findElements(By.className("input__control"));
- //       //textFields.get(0).sendKeys("Rafael Ambrozius-Kusto");
+    //driver.get("http://localhost:9999/");
+    //List<WebElement> textFields = driver.findElements(By.className("input__control"));
+    //       //textFields.get(0).sendKeys("Rafael Ambrozius-Kusto");
 //        textFields.get(1).sendKeys("+88005553535");
-  //      driver.findElement(By.className("checkbox__box")).click();
-  //      driver.findElement(By.tagName("button")).click();
-  //      String actualText = driver.findElement(By.className("input__sub")).getText().trim();
-  //      String expected = "Имя и Фамилия указаные неверно. Допустимы только русские буквы, пробелы и дефисы.";
- //       assertEquals(expected, actualText);
+    //      driver.findElement(By.className("checkbox__box")).click();
+    //      driver.findElement(By.tagName("button")).click();
+    //      String actualText = driver.findElement(By.className("input__sub")).getText().trim();
+    //      String expected = "Имя и Фамилия указаные неверно. Допустимы только русские буквы, пробелы и дефисы.";
+    //       assertEquals(expected, actualText);
 
- //   }
+    //   }
 
- //   @Test
- //   void notValidPhoneNumberWithoutPlusTest() {
+    //   @Test
+    //   void notValidPhoneNumberWithoutPlusTest() {
 
-  //      driver.get("http://localhost:9999/");
- //       driver.findElement(By.cssSelector("[type ='text']")).sendKeys("Рафаэль Амброзиус-Кусто");
-  //      driver.findElement(By.cssSelector("[type ='tel']")).sendKeys("88005553535");
-  //      driver.findElement(By.className("checkbox__box")).click();
-  //      driver.findElement(By.tagName("button")).click();
-  //      String actualText = driver.findElement(By.cssSelector("[data-test-id='phone'].input_invalid.input__sub")).getText().trim();
-  //      String expected = "Телефон указан неверно. Должно быть 11 цифр, например, +79012345678.";
-  //      assertEquals(expected, actualText);
-    }
+    //      driver.get("http://localhost:9999/");
+    //       driver.findElement(By.cssSelector("[type ='text']")).sendKeys("Рафаэль Амброзиус-Кусто");
+    //      driver.findElement(By.cssSelector("[type ='tel']")).sendKeys("88005553535");
+    //      driver.findElement(By.className("checkbox__box")).click();
+    //      driver.findElement(By.tagName("button")).click();
+    //      String actualText = driver.findElement(By.cssSelector("[data-test-id='phone'].input_invalid.input__sub")).getText().trim();
+    //      String expected = "Телефон указан неверно. Должно быть 11 цифр, например, +79012345678.";
+    //      assertEquals(expected, actualText);
+}
 
 
 
